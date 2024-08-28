@@ -1545,6 +1545,16 @@ hasown@^2.0.0, hasown@^2.0.1, hasown@^2.0.2:
   dependencies:
     function-bind "^1.1.2"
 
+highcharts-react-official@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/highcharts-react-official/-/highcharts-react-official-3.2.1.tgz#4b62a7af2969bdebde6b338d36f6b9bf1f1029bc"
+  integrity sha512-hyQTX7ezCxl7JqumaWiGsroGWalzh24GedQIgO3vJbkGOZ6ySRAltIYjfxhrq4HszJOySZegotEF7v+haQ75UA==
+
+highcharts@^11.4.7:
+  version "11.4.7"
+  resolved "https://registry.yarnpkg.com/highcharts/-/highcharts-11.4.7.tgz#ac6cf5aa325b8bc6880288dd401711876372fb3f"
+  integrity sha512-4FQTaV/9DtYal6U8rCgGeFWzzoL5QoKowpzyGlG0sp+UJKjm9G9t4bvyz+odvXt+YcqUvK9GEspdLoBnKSWGVA==
+
 ignore@^5.2.0:
   version "5.3.2"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.3.2.tgz#3cd40e729f3643fd87cb04e50bf0eb722bc596f5"

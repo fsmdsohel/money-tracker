@@ -4,6 +4,7 @@ import { Bar, BarChart } from "recharts";
 
 import { ChartConfig, ChartContainer } from "@/components/ui/chart";
 import Link from "next/link";
+import MainTable from "@/components/dashboard/mainTable";
 
 const chartData = [
   { month: "January", desktop: 186, mobile: 80 },
@@ -27,14 +28,11 @@ const chartConfig = {
 
 export default function Component() {
   return (
-    <div>
+    <div className="max-w-[1260px] w-[100%] mx-auto p-3">
       <Link href="/dashboard">Dashboard</Link>
-      <ChartContainer config={chartConfig} className="h-[200px] w-[300px]">
-        <BarChart accessibilityLayer data={chartData}>
-          <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-          <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
-        </BarChart>
-      </ChartContainer>
+      <div className="w-[600px] max-w-[100%] overflow-x-auto overflow">
+        <MainTable />
+      </div>
     </div>
   );
 }
