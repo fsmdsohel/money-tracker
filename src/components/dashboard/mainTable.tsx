@@ -10,8 +10,15 @@ import {
 } from "@/components/ui/table";
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
+import { useEffect } from "react";
 
-const data = [
+type Data = {
+  category: string;
+  budget: number;
+  expenses: number;
+};
+
+const data: Data[] = [
   {
     category: "Groceries",
     budget: 500,
@@ -48,8 +55,30 @@ const data = [
     expenses: 100,
   },
 ];
+function calculateTotals(data: Data[]) {
+  let totalBudget = 0;
+  let totalExpenses = 0;
+
+  data.forEach((item) => {
+    totalBudget += item.budget;
+    totalExpenses += item.expenses;
+  });
+
+  return {
+    totalBudget,
+    totalExpenses,
+  };
+}
+
+function formatToCurrency(value: number) {
+  return `৳${value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,")}`;
+}
 
 export default function MainTable() {
+  useEffect(() => {
+    const totals = calculateTotals(data);
+  }, []);
+
   return (
     <Table>
       <TableCaption>Overview of your budget and expenses.</TableCaption>
@@ -65,7 +94,7 @@ export default function MainTable() {
         {data.map((item) => (
           <TableRow key={item.category}>
             <TableCell>{item.category}</TableCell>
-            <TableCell>{item.budget}</TableCell>
+            <TableCell>{formatToCurrency(item.budget)}</TableCell>
             <TableCell>
               <div
                 className={`
@@ -76,7 +105,9 @@ export default function MainTable() {
                     } text-white rounded-md px-2 py-1 text-center
                   `}
               >
-                <span className="text-xs font-medium">{item.expenses}</span>
+                <span className="text-xs font-medium">
+                  {formatToCurrency(item.expenses)}
+                </span>
               </div>
             </TableCell>
             <TableCell className="py-2">
@@ -95,9 +126,15 @@ export default function MainTable() {
       <TableFooter>
         <TableRow>
           <TableCell>Total Budget</TableCell>
-          <TableCell className="text-right">$2,500.00</TableCell>
+          <TableCell className="text-right">
+            {formatToCurrency(data.reduce((acc, item) => acc + item.budget, 0))}
+          </TableCell>
           <TableCell>Total Expenses</TableCell>
-          <TableCell className="text-right">$2,500.00</TableCell>
+          <TableCell className="text-right">
+            {formatToCurrency(
+              data.reduce((acc, item) => acc + item.expenses, 0)
+            )}
+          </TableCell>
         </TableRow>
       </TableFooter>
     </Table>
