@@ -4,7 +4,10 @@ import { Bar, BarChart } from "recharts";
 
 import { ChartConfig, ChartContainer } from "@/components/ui/chart";
 import Link from "next/link";
-import MainTable from "@/components/dashboard/mainTable";
+import TodayStatistic from "@/components/dashboard/todayStatistic";
+import MonthlyStatistic from "@/components/dashboard/monthlyStatistic";
+import ExpensesTable from "@/components/dashboard/expensesTable";
+import IncomeTable from "@/components/dashboard/incomeTable";
 
 const chartData = [
   { month: "January", desktop: 186, mobile: 80 },
@@ -30,8 +33,17 @@ export default function Component() {
   return (
     <div className="max-w-[1260px] w-[100%] mx-auto p-3">
       <Link href="/dashboard">Dashboard</Link>
+      <div className="grid grid-cols-2 gap-4 mb-8 md:grid-cols-3">
+        <TodayStatistic />
+        <MonthlyStatistic />
+      </div>
       <div className="w-[600px] max-w-[100%] overflow-x-auto overflow">
-        <MainTable />
+        <div>This month expenses</div>
+        <ExpensesTable />
+      </div>
+      <div className="w-[600px] max-w-[100%] overflow-x-auto overflow">
+        <div>This month income</div>
+        <IncomeTable />
       </div>
     </div>
   );
