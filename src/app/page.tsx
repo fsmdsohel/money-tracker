@@ -8,6 +8,7 @@ import TodayStatistic from "@/components/dashboard/todayStatistic";
 import MonthlyStatistic from "@/components/dashboard/monthlyStatistic";
 import ExpensesTable from "@/components/dashboard/expensesTable";
 import IncomeTable from "@/components/dashboard/incomeTable";
+import BudgetPlanner from "@/components/dashboard/budgetPlanner";
 
 const chartData = [
   { month: "January", desktop: 186, mobile: 80 },
@@ -37,13 +38,20 @@ export default function Component() {
         <TodayStatistic />
         <MonthlyStatistic />
       </div>
-      <div className="w-[600px] max-w-[100%] overflow-x-auto overflow">
-        <div>This month expenses</div>
-        <ExpensesTable />
+      <div className="flex gap-4 justify-between items-start flex-wrap">
+        <div className="flex-1 min-w-[360px]">
+          <div>This month expenses</div>
+          <ExpensesTable />
+        </div>
+        <div className="flex-1 min-w-[360px]">
+          <div>This month income</div>
+          <IncomeTable />
+        </div>
       </div>
-      <div className="w-[600px] max-w-[100%] overflow-x-auto overflow">
-        <div>This month income</div>
-        <IncomeTable />
+      <div className="flex gap-4 justify-between items-start flex-wrap">
+        <div className="flex-1 min-w-[360px]">
+          <BudgetPlanner />
+        </div>
       </div>
     </div>
   );
